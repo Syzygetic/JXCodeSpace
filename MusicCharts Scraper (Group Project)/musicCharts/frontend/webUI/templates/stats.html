@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Statistics</h1>
+<div class="table_container" style="display: flex; justify-content: center;">
+    <br>
+    <br>
+    <br>
+    </div>
+    <table width="100%">
+       <tr><th>Top Artists (Billboard)</th>
+        <th>Top Artist (Spotify)</th>
+        <th>Top Songs (Spotify)</th></tr>
+        <tr>
+            <td><img src="{{ url_for('static', filename='topArtistbillboard.png') }}" width="480px"></td>
+            <td><img src="{{ url_for('static', filename='topArtistspotify.png') }}" width="480px"></td>
+            <td><img src="{{ url_for('static', filename='topSongspotify.png') }}" width="480px"></td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

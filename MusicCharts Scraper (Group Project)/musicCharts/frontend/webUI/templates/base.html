@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html>
+    <head>
+        <title>Music Charts</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css" />
+    </head>
+    <div class="nav">
+        <h1>Music Charts</h1>
+            <a href="{{ url_for('index') }}"><div class="nav_link">home</div></a>
+            <a href="{{ url_for('topcharts') }}"><div class="nav_link">Top Charts</div></a>
+            <a href="{{ url_for('weeklycharts') }}"><div class="nav_link">Weekly Charts</div></a>
+            <a href="{{ url_for('stats') }}"><div class="nav_link">stats</div></a>
+    </div>
+
+    <div class="content">
+        {% block content %}
+        
+        {% endblock %}
+    </div>
+
+    <div class="footer" style="margin: 0 auto; margin-top: 50px;">
+        OOP Assignment - Created by Group 22.
+        <h6>Version 1.0</h6>
+        <h4>TEAM KOLLT</h4>
+        <h5>
+            Loh Kai Heng (2609718L)<br>
+            Lim Jun Xian (2609724L)<br>
+            Kwek Yan Han (2609731K)<br>
+            Ong Zhen Yu Brandon (2609773O)<br>
+            Madeline Thong Jia Qi (2609777T)<br>
+        </h5>
+        
+        
+        
+    </div>
+</html>

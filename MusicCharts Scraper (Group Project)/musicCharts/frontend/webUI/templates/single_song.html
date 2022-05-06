@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 style="align-items: center; display: flex;"><span class="circle">{{ song['songRank'] }}</span> {{ song['songName'] }} by {{ song['songArtist'] }} {% if song['chartSource'] == 'Spotify' %}
+    <div class="sourceBox">{{ song['chartSource'] }}</div>
+{% else %}
+    <div class="sourceBox" style="background-color: var(--nord8);">{{ song['chartSource'] }}</div>
+{% endif %}
+</h2>
+
+<h3>Song Details</h3>
+
+
+
+{% if videoLink %}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoLink }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% else %}
+    No YouTube video link :( <br>
+    Either YouTube API limit reached or there is no video results found.
+{% endif %}
+
+
+
+<h3>Comments from Reddit</h3>
+
+<div class="commentBox">
+    {{ redditComment['songName'] }}<br><br>
+    <div class="commentContainer">
+        <div class="countBox">Song Likes<div class="numberBox">{{ redditComment['songLikes'] }}</div></div>
+        <div class="countBox">Song Posts<div class="numberBox">{{ redditComment['songPosts'] }}</div></div>
+        <div class="countBox">Song Comments<div class="numberBox">{{ redditComment['songComments'] }}</div></div>
+    </div><br>
+{% if redditComment['songSampleTitles'] %}
+    <div style="display: flex; flex-wrap: wrap;">
+    {% for song in redditComment['songSampleTitles'] %}
+        <div class="singleComment">{{ song }}<br></div>
+    {% endfor %}
+    </div>
+{% else %}
+    No Reddit Comments :( <br>
+{% endif %}
+
+</div>
+
+
+<h3>Comments from Twitter</h3>
+<div class="commentBox">
+    {{ twitterComment['songName'] }}<br><br>
+
+{% if twitterComment['songComment'] %}
+    <div style="display: flex; flex-wrap: wrap;">
+    {% for song in twitterComment['songComment'] %}
+        {% if song != "" %}
+            <div class="singleComment">{{ song }}<br></div>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% else %}
+    No Twitter Comments :( <br>
+{% endif %}
+
+</div>
+
+
+{% endblock %}

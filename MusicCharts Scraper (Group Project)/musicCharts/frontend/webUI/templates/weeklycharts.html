@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Weekly Charts</h1>
+    <div style="display: flex; flex-direction: row; ">
+    <a href="/weeklycharts?week=0">Current Week</a>
+    <a href="/weeklycharts?week=1">Last Week</a>
+    <a href="/weeklycharts?week=2">3 weeks ago</a>
+    <a href="/weeklycharts?week=3">4 weeks ago</a>
+    <a href="/weeklycharts?week=4">5 weeks ago</a>
+    <a href="/weeklycharts?week=5">6 weeks ago</a>
+    <a href="/weeklycharts?week=6">7 weeks ago</a>
+    <a href="/weeklycharts?week=7">8 weeks ago</a>
+    <a href="/weeklycharts?week=8">9 weeks ago</a>
+    <a href="/weeklycharts?week=9">10 weeks ago</a>
+</div>
+<div class="table_container" style="display: flex; justify-content: center;">
+
+    <div class="chart_table">
+        <h2>Spotify</h2>
+        <table width="100%">
+        <tr>
+            <th>RANK</th>
+            <th>SONG</th>
+            <th>ARTIST</th>
+        </tr>
+        {% for song in spotifyChart %}
+            <tr >
+                <td>{{ song['songRank'] }}</td>
+                <td style='text-align: left;'>{{ song['songName'] }}</td>
+                <td style='text-align: left;'>{{ song['songArtist'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+
+    <div class="chart_table" >
+        <h2>Billboard</h2>
+        <table width="100%">
+        <tr>
+            <th>RANK</th>
+            <th>SONG</th>
+            <th>ARTIST</th>
+        </tr>
+        {% for song in billboardChart %}
+            <tr >
+                <td>{{ song['songRank'] }}</td>
+                <td style='text-align: left;'>{{ song['songName'] }}</td>
+                <td style='text-align: left;'>{{ song['songArtist'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+</div>
+{% endblock %}

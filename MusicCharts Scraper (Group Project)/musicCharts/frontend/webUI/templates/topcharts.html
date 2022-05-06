@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Top Charts</h1>
+<div class="table_container" style="display: flex; justify-content: center;">
+    
+    <div class="chart_table">
+        <h2>Spotify</h2>
+        <table width="100%">
+        <tr>
+            <th>RANK</th>
+            <th>SONG</th>
+            <th>ARTIST</th>
+            <th>ACTIONS</th>
+        </tr>
+        {% for song in spotifyChart %}
+            <tr >
+                <td><a href="/song?chartSource={{ song['chartSource'] }}&id={{ song['songRank'] }}">{{ song['songRank'] }}</a></td>
+                <td style='text-align: left;'>{{ song['songName'] }}</td>
+                <td style='text-align: left;'>{{ song['songArtist'] }}</td>
+                <td><a style="white-space: nowrap;" href="/song?chartSource={{ song['chartSource'] }}&id={{ song['songRank'] }}">More info</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+
+    <div class="chart_table" >
+        <h2>Billboard</h2>
+        <table width="100%">
+        <tr>
+            <th>RANK</th>
+            <th>SONG</th>
+            <th>ARTIST</th>
+            <th>ACTIONS</th>
+        </tr>
+        {% for song in billboardChart %}
+            <tr >
+                <td><a href="/song?chartSource={{ song['chartSource'] }}&id={{ song['songRank'] }}">{{ song['songRank'] }}</a></td>
+                <td style='text-align: left;'>{{ song['songName'] }}</td>
+                <td style='text-align: left;'>{{ song['songArtist'] }}</td>
+                <td><a style="white-space: nowrap;" href="/song?chartSource={{ song['chartSource'] }}&id={{ song['songRank'] }}">More info</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+</div>
+{% endblock %}
